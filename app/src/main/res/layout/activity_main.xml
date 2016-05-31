@@ -24,31 +24,37 @@
         android:onClick="addNewItem"
         android:layout_alignTop="@+id/btnShowItems"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="54dp"
-        android:layout_marginStart="54dp" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/txtvwOutput"
-        android:layout_below="@+id/btnAddItem"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/edtxtNewItem"
-        android:layout_alignEnd="@+id/edtxtNewItem" />
+        android:layout_alignEnd="@+id/edtxtNewItem"
+        android:layout_below="@+id/btnAddItem" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Show Items"
         android:id="@+id/btnShowItems"
+        android:onClick="showAllItems"
         android:layout_below="@+id/edtxtNewItem"
-        android:layout_alignRight="@+id/edtxtNewItem"
-        android:layout_alignEnd="@+id/edtxtNewItem"
-        android:layout_marginRight="43dp"
-        android:layout_marginEnd="43dp"
-        android:onClick="showAllItems" />
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Credits"
+        android:id="@+id/btnCredits"
+        android:layout_alignBaseline="@+id/btnShowItems"
+        android:layout_alignBottom="@+id/btnShowItems"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="credits" />
 </RelativeLayout>

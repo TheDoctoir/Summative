@@ -1,6 +1,7 @@
 package com.example.student.summative;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity
     private Button btnAddItem;
     private Button btnShowItems;
     private TextView txtvwOutput;
+    private Button btnCredits;
 
 
     @Override
@@ -32,8 +34,18 @@ public class MainActivity extends AppCompatActivity
         btnAddItem = (Button) findViewById(R.id.btnAddItem);
         btnShowItems = (Button) findViewById(R.id.btnShowItems);
         txtvwOutput = (TextView) findViewById(R.id.txtvwOutput);
+        btnCredits = (Button) findViewById(R.id.btnCredits);
 
     }
+
+    public void credits(View vw){
+
+        Intent i= new Intent(MainActivity.this, Credits.class);
+        startActivity(i);
+
+    }
+
+
 
     public void addNewItem(View vw)
     {
