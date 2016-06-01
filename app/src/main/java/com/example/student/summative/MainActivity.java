@@ -43,14 +43,14 @@ public class MainActivity extends AppCompatActivity
         startActivity(MainActivity.this, mainMenu.class);
 
     }
-    /*
-    public void credits(View vw){
 
-        Intent i= new Intent(MainActivity.this, Credits.class);
+    public void menuMain(View vw){
+
+        Intent i= new Intent(MainActivity.this, mainMenu.class);
         startActivity(i);
 
     }
-    */
+
 
 
     public void addNewItem(View vw)

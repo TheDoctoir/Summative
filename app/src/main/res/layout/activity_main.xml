@@ -33,12 +33,12 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/txtvwOutput"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/edtxtNewItem"
         android:layout_alignEnd="@+id/edtxtNewItem"
-        android:layout_below="@+id/btnAddItem" />
+        android:layout_below="@+id/btnAddItem"
+        android:layout_above="@+id/button" />
 
     <Button
         android:layout_width="wrap_content"
@@ -51,5 +51,15 @@
         android:layout_alignEnd="@+id/txtvwOutput"
         android:layout_marginRight="42dp"
         android:layout_marginEnd="42dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Main Menu"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="menuMain" />
 
 </RelativeLayout>
