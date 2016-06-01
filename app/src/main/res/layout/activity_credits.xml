@@ -30,7 +30,7 @@
         android:id="@+id/txtvw2"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="100dp"
+        android:textSize="50dp"
         android:textColor="#03ee3e" />
 
     <RatingBar
