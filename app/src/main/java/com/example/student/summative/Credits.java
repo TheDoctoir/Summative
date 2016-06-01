@@ -42,7 +42,7 @@ public class Credits extends AppCompatActivity {
 
     public void mainMenu(View vw){
 
-        Intent a= new Intent(Credits.this, MainActivity.class);
+        Intent a= new Intent(Credits.this, mainMenu.class);
         startActivity(a);
 
     }
@@ -50,3 +50,5 @@ public class Credits extends AppCompatActivity {
 }
 
 
+//https://www.youtube.com/watch?v=0MrPs4yk9pU rating bars
+//

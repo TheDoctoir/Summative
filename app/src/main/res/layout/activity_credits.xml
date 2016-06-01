@@ -42,4 +42,15 @@
         android:layout_marginBottom="53dp"
         android:numStars="5" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Give a rating and I hoped you enjoyed."
+        android:id="@+id/textView"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#055bfb"
+        android:textSize="20dp" />
+
 </RelativeLayout>
