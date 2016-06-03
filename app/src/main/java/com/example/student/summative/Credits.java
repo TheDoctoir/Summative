@@ -33,7 +33,7 @@ public class Credits extends AppCompatActivity {
                 new RatingBar.OnRatingBarChangeListener() {
                     @Override
                     public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                        txtvw2.setText( "Thanks for the rating of " +(String.valueOf(rating)));
+                        txtvw2.setText( "Thanks for the rating of " +(String.valueOf(rating)) + " :D");
                     }
                 }
         );
