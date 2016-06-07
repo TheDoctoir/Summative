@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity
 
             cntntVals = new ContentValues();
 
-            cntntVals.put("ITEM", strItemToAdd);
+            cntntVals.put("ANIME" + "STUDIO" + "REVIEW", strItemToAdd);
 
             try
             {
@@ -162,12 +162,17 @@ public class MainActivity extends AppCompatActivity
         private ATDatabaseHelper atDatabaseHelper;
         private Cursor crsrDBReader;
         private ArrayList<String> arylstAllItems;
+        private ArrayList<Integer> arylstAllItems2;
+        int numOfArguments = 0;
+
+
 
         @Override
         protected void onPreExecute()
         {
             atDatabaseHelper = new ATDatabaseHelper(MainActivity.this, null, null, 0);
             arylstAllItems = new ArrayList<String>();
+            arylstAllItems2 = new ArrayList<Integer>();
         }
 
         @Override
@@ -190,9 +195,11 @@ public class MainActivity extends AppCompatActivity
                 {
                     while(crsrDBReader.isAfterLast() == false)
                     {
-                        String strItem = crsrDBReader.getString(crsrDBReader.getColumnIndex("ITEM"));
+                        String strItem = crsrDBReader.getString(crsrDBReader.getColumnIndex("ANIME" + "STUDIO"));
+                        Integer intItem2 = crsrDBReader.getInt(crsrDBReader.getColumnIndex("REVIEW"));
 
                         arylstAllItems.add(strItem);
+                        arylstAllItems2.add(intItem2);
 
                         crsrDBReader.moveToNext();
                     }
@@ -207,7 +214,7 @@ public class MainActivity extends AppCompatActivity
         @Override
         protected void onPostExecute(Boolean value)
         {
-            txtvwOutput.setText(arylstAllItems.toString());
+            txtvwOutput.setText(arylstAllItems.toString() + arylstAllItems2.toString());
         }
 
     }
