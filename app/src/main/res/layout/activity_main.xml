@@ -12,9 +12,12 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edtxtNewItem"
+        android:id="@+id/edtxtTV"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:text="TV Title:"
+        android:textSize="25dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -22,23 +25,21 @@
         android:text="Add Item"
         android:id="@+id/btnAddItem"
         android:onClick="addNewItem"
-        android:layout_alignTop="@+id/btnShowItems"
-        android:layout_toLeftOf="@+id/btnShowItems"
-        android:layout_toStartOf="@+id/btnShowItems"
-        android:layout_marginRight="44dp"
-        android:layout_marginEnd="44dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/button"
+        android:layout_toStartOf="@+id/button" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/txtvwOutput"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/edtxtNewItem"
-        android:layout_alignEnd="@+id/edtxtNewItem"
-        android:layout_below="@+id/btnAddItem"
-        android:layout_above="@+id/button" />
+        android:layout_above="@+id/btnAddItem"
+        android:layout_below="@+id/edtxtReview" />
 
     <Button
         android:layout_width="wrap_content"
@@ -46,11 +47,10 @@
         android:text="Show Items"
         android:id="@+id/btnShowItems"
         android:onClick="showAllItems"
-        android:layout_below="@+id/edtxtNewItem"
-        android:layout_alignRight="@+id/txtvwOutput"
-        android:layout_alignEnd="@+id/txtvwOutput"
-        android:layout_marginRight="42dp"
-        android:layout_marginEnd="42dp" />
+        android:layout_alignBaseline="@+id/button"
+        android:layout_alignBottom="@+id/button"
+        android:layout_toRightOf="@+id/button"
+        android:layout_toEndOf="@+id/button" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -61,5 +61,29 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:onClick="menuMain" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtxtStudio"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/edtxtTV"
+        android:text="Studio:"
+        android:textSize="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtxtReview"
+        android:layout_below="@+id/edtxtStudio"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:text="Review Score"
+        android:textSize="25dp" />
 
 </RelativeLayout>

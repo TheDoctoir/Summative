@@ -18,10 +18,12 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
 {
 
-    private EditText edtxtNewItem;
+    private EditText edtxtTV;
     private Button btnAddItem;
     private Button btnShowItems;
     private TextView txtvwOutput;
+    private EditText edtxtStudio;
+    private EditText edtxtReview;
 
 
     @Override
@@ -29,10 +31,12 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        edtxtNewItem = (EditText) findViewById(R.id.edtxtNewItem);
+        edtxtTV = (EditText) findViewById(R.id.edtxtTV);
         btnAddItem = (Button) findViewById(R.id.btnAddItem);
         btnShowItems = (Button) findViewById(R.id.btnShowItems);
         txtvwOutput = (TextView) findViewById(R.id.txtvwOutput);
+        edtxtStudio = (EditText) findViewById(R.id.edtxtStudio);
+        edtxtReview = (EditText) findViewById(R.id.edtxtReview);
 
 
 
@@ -55,7 +59,43 @@ public class MainActivity extends AppCompatActivity
 
     public void addNewItem(View vw)
     {
-        new ItemAdder().execute(edtxtNewItem.getText().toString());
+        ATDatabaseHelper atdatabasehelper = new ATDatabaseHelper(this, null, null, 0);
+        SQLiteDatabase db;
+        String tvTitle;
+        String studio;
+        String review;
+        ContentValues contentValues;
+
+        try {
+            db = atdatabasehelper.getWritableDatabase();
+            if (edtxtTV.getText().length()==0 || edtxtStudio.getText().length()==0 || edtxtReview.getText().length()==0){
+
+                txtvwOutput.setText("Please enter in all values");
+            } else {
+                tvTitle = edtxtTV.getText().toString();
+                studio = edtxtStudio.getText().toString();
+                review = edtxtReview.getText().toString();
+
+                contentValues = new ContentValues();
+                contentValues.put("ANIME", tvTitle);
+                contentValues.put("STUDIO", studio);
+                contentValues.put("REVIEW", review);
+
+                atdatabasehelper.insertElement(db, contentValues);
+
+                txtvwOutput.setText("Added properly.");
+
+
+            }
+            db.close();
+
+
+        } catch (SQLiteException e){
+            txtvwOutput.setText("Not Found.");
+            edtxtTV.setText("Not Found.");
+            edtxtStudio.setText("Not Found.");
+            edtxtReview.setText("Not Found.");
+        }
 
     }
 
