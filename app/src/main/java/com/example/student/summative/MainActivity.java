@@ -59,6 +59,11 @@ public class MainActivity extends AppCompatActivity
 
     public void addNewItem(View vw)
     {
+
+        new ItemAdder().execute();
+        //new ItemAdder().execute(edtxtStudio.getText().toString());
+        //new ItemAdder().execute(Integer.parseInt(edtxtReview.getText().toString()));
+/*
         ATDatabaseHelper atdatabasehelper = new ATDatabaseHelper(this, null, null, 0);
         SQLiteDatabase db;
         String tvTitle;
@@ -96,7 +101,7 @@ public class MainActivity extends AppCompatActivity
             edtxtStudio.setText("Not Found.");
             edtxtReview.setText("Not Found.");
         }
-
+*/
     }
 
     public void showAllItems(View vw)
@@ -109,21 +114,28 @@ public class MainActivity extends AppCompatActivity
         private SQLiteDatabase db;
         private ATDatabaseHelper atDatabaseHelper;
         private ContentValues cntntVals;
+        private String anime;
+        private String studio;
+        private Integer review;
 
-        @Override
-        protected void onPreExecute()
-        {
-            atDatabaseHelper = new ATDatabaseHelper(MainActivity.this, null, null, 0);
+            @Override
+            protected void onPreExecute()
+            {
+                atDatabaseHelper = new ATDatabaseHelper(MainActivity.this, null, null, 0);
+                anime = edtxtTV.getText().toString();
+                studio = edtxtStudio.getText().toString();
+                review = Integer.parseInt(edtxtReview.getText().toString());
         }
 
         @Override
         protected Boolean doInBackground(String... params)
         {
-            String strItemToAdd = params[0];
 
             cntntVals = new ContentValues();
 
-            cntntVals.put("ANIME" + "STUDIO" + "REVIEW", strItemToAdd);
+            cntntVals.put("ANIME", anime);
+            cntntVals.put("STUDIO",studio);
+            cntntVals.put("REVIEW", review);
 
             try
             {
@@ -134,7 +146,7 @@ public class MainActivity extends AppCompatActivity
                 return false;
             }
 
-            if (strItemToAdd.length() == 0)
+            if (anime.length() == 0 || studio.length() == 0 || review == 0)
             {
                 publishProgress("You must enter a value to add a new item.");
                 return false;
@@ -163,7 +175,6 @@ public class MainActivity extends AppCompatActivity
         private Cursor crsrDBReader;
         private ArrayList<String> arylstAllItems;
         private ArrayList<Integer> arylstAllItems2;
-        int numOfArguments = 0;
 
 
 
