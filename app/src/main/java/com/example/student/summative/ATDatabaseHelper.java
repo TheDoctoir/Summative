@@ -40,7 +40,7 @@ public class ATDatabaseHelper extends SQLiteOpenHelper
         db.execSQL("CREATE TABLE LIST (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "ANIME TEXT, " +
                 "STUDIO TEXT, " +
-                "REVIEW REAL);");
+                "REVIEW INTEGER);");
 
     }
 

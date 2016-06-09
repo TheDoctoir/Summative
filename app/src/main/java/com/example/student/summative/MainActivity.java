@@ -175,6 +175,7 @@ public class MainActivity extends AppCompatActivity
         private Cursor crsrDBReader;
         private ArrayList<String> arylstAllItems;
         private ArrayList<Integer> arylstAllItems2;
+        private ArrayList<String> arylstAllItems3;
 
 
 
@@ -183,6 +184,7 @@ public class MainActivity extends AppCompatActivity
         {
             atDatabaseHelper = new ATDatabaseHelper(MainActivity.this, null, null, 0);
             arylstAllItems = new ArrayList<String>();
+            arylstAllItems3 = new ArrayList<String>();
             arylstAllItems2 = new ArrayList<Integer>();
         }
 
@@ -198,6 +200,7 @@ public class MainActivity extends AppCompatActivity
                 return false;
             }
 
+
             crsrDBReader = db.rawQuery("SELECT * FROM LIST", null);
 
             if(crsrDBReader != null)
@@ -206,11 +209,13 @@ public class MainActivity extends AppCompatActivity
                 {
                     while(crsrDBReader.isAfterLast() == false)
                     {
-                        String strItem = crsrDBReader.getString(crsrDBReader.getColumnIndex("ANIME" + "STUDIO"));
+                        String strItem = crsrDBReader.getString(crsrDBReader.getColumnIndex("ANIME"));
+                        String strItem2 = crsrDBReader.getString(crsrDBReader.getColumnIndex("STUDIO"));
                         Integer intItem2 = crsrDBReader.getInt(crsrDBReader.getColumnIndex("REVIEW"));
 
                         arylstAllItems.add(strItem);
                         arylstAllItems2.add(intItem2);
+                        arylstAllItems3.add(strItem2);
 
                         crsrDBReader.moveToNext();
                     }
@@ -225,7 +230,7 @@ public class MainActivity extends AppCompatActivity
         @Override
         protected void onPostExecute(Boolean value)
         {
-            txtvwOutput.setText(arylstAllItems.toString() + arylstAllItems2.toString());
+            txtvwOutput.setText(arylstAllItems.toString() + "\n" + arylstAllItems3.toString() + "\n" + arylstAllItems2 );
         }
 
     }
