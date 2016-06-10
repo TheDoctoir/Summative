@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity
     private TextView txtvwOutput;
     private EditText edtxtStudio;
     private EditText edtxtReview;
+    private ImageButton uturnbtn;
 
 
     @Override
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity
         txtvwOutput = (TextView) findViewById(R.id.txtvwOutput);
         edtxtStudio = (EditText) findViewById(R.id.edtxtStudio);
         edtxtReview = (EditText) findViewById(R.id.edtxtReview);
+        uturnbtn = (ImageButton) findViewById(R.id.uturnbtn);
 
 
 
