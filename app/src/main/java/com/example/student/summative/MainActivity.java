@@ -55,56 +55,13 @@ public class MainActivity extends AppCompatActivity
 
         Intent i= new Intent(MainActivity.this, mainMenu.class);
         startActivity(i);
-
     }
 
 
 
     public void addNewItem(View vw)
     {
-
         new ItemAdder().execute();
-        //new ItemAdder().execute(edtxtStudio.getText().toString());
-        //new ItemAdder().execute(Integer.parseInt(edtxtReview.getText().toString()));
-/*
-        ATDatabaseHelper atdatabasehelper = new ATDatabaseHelper(this, null, null, 0);
-        SQLiteDatabase db;
-        String tvTitle;
-        String studio;
-        String review;
-        ContentValues contentValues;
-
-        try {
-            db = atdatabasehelper.getWritableDatabase();
-            if (edtxtTV.getText().length()==0 || edtxtStudio.getText().length()==0 || edtxtReview.getText().length()==0){
-
-                txtvwOutput.setText("Please enter in all values");
-            } else {
-                tvTitle = edtxtTV.getText().toString();
-                studio = edtxtStudio.getText().toString();
-                review = edtxtReview.getText().toString();
-
-                contentValues = new ContentValues();
-                contentValues.put("ANIME", tvTitle);
-                contentValues.put("STUDIO", studio);
-                contentValues.put("REVIEW", review);
-
-                atdatabasehelper.insertElement(db, contentValues);
-
-                txtvwOutput.setText("Added properly.");
-
-
-            }
-            db.close();
-
-
-        } catch (SQLiteException e){
-            txtvwOutput.setText("Not Found.");
-            edtxtTV.setText("Not Found.");
-            edtxtStudio.setText("Not Found.");
-            edtxtReview.setText("Not Found.");
-        }
-*/
     }
 
     public void showAllItems(View vw)
@@ -119,7 +76,7 @@ public class MainActivity extends AppCompatActivity
         private ContentValues cntntVals;
         private String anime;
         private String studio;
-        private Integer review;
+        private Double review;
 
             @Override
             protected void onPreExecute()
@@ -127,7 +84,7 @@ public class MainActivity extends AppCompatActivity
                 atDatabaseHelper = new ATDatabaseHelper(MainActivity.this, null, null, 0);
                 anime = edtxtTV.getText().toString();
                 studio = edtxtStudio.getText().toString();
-                review = Integer.parseInt(edtxtReview.getText().toString());
+                review = Double.parseDouble(edtxtReview.getText().toString());
         }
 
         @Override
@@ -144,6 +101,7 @@ public class MainActivity extends AppCompatActivity
             {
                 db = atDatabaseHelper.getWritableDatabase();
             }
+
             catch(SQLiteException sqlEx)
             {
                 return false;
@@ -177,7 +135,7 @@ public class MainActivity extends AppCompatActivity
         private ATDatabaseHelper atDatabaseHelper;
         private Cursor crsrDBReader;
         private ArrayList<String> arylstAllItems;
-        private ArrayList<Integer> arylstAllItems2;
+        private ArrayList<Double> arylstAllItems2;
         private ArrayList<String> arylstAllItems3;
 
 
@@ -188,7 +146,7 @@ public class MainActivity extends AppCompatActivity
             atDatabaseHelper = new ATDatabaseHelper(MainActivity.this, null, null, 0);
             arylstAllItems = new ArrayList<String>();
             arylstAllItems3 = new ArrayList<String>();
-            arylstAllItems2 = new ArrayList<Integer>();
+            arylstAllItems2 = new ArrayList<Double>();
         }
 
         @Override
@@ -214,10 +172,10 @@ public class MainActivity extends AppCompatActivity
                     {
                         String strItem = crsrDBReader.getString(crsrDBReader.getColumnIndex("ANIME"));
                         String strItem2 = crsrDBReader.getString(crsrDBReader.getColumnIndex("STUDIO"));
-                        Integer intItem2 = crsrDBReader.getInt(crsrDBReader.getColumnIndex("REVIEW"));
+                        Double dbleItem2 = crsrDBReader.getDouble(crsrDBReader.getColumnIndex("REVIEW"));
 
                         arylstAllItems.add(strItem);
-                        arylstAllItems2.add(intItem2);
+                        arylstAllItems2.add(dbleItem2);
                         arylstAllItems3.add(strItem2);
 
                         crsrDBReader.moveToNext();
@@ -233,7 +191,7 @@ public class MainActivity extends AppCompatActivity
         @Override
         protected void onPostExecute(Boolean value)
         {
-            txtvwOutput.setText(arylstAllItems.toString() + "\n" + arylstAllItems3.toString() + "\n" + arylstAllItems2 );
+            txtvwOutput.setText(arylstAllItems.toString() + "\n" + arylstAllItems3.toString() + "\n" + arylstAllItems2);
         }
 
     }
